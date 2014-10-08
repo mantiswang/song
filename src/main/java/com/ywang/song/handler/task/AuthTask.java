@@ -17,9 +17,7 @@
  */
 package com.ywang.song.handler.task;
 
-import com.alibaba.fastjson.JSONObject;
 import com.ywang.song.db.dao.AccountDao;
-import com.ywang.utils.LoggerUtil;
 
 /*
  * song
@@ -36,7 +34,7 @@ public class AuthTask {
 
 		switch (code) {
 		case USER:
-		    register(param);
+		    updateUser(param);
 			break;
 
 		default:
@@ -49,13 +47,7 @@ public class AuthTask {
 	 * 注册
 	 * @param param
 	 */
-	private static void register(String param) {
-		JSONObject jsonObj = JSONObject.parseObject(param);
-		String uname = jsonObj.getString("uname");
-		String pword = jsonObj.getString("pword");
-		
-		LoggerUtil.logMsg("register uname : " + uname + " pword :" + pword);
-		
-		AccountDao.addUser("");
+	private static void updateUser(String param) {
+		AccountDao.replaceUser(param);
 	}
 }
