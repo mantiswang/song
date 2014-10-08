@@ -18,7 +18,6 @@
 package com.ywang.utils;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 
 /**
  * song
@@ -31,7 +30,7 @@ public class LoggerUtil {
 
 	
 	public static void logMsg(String msg) {
-		Logger.getLogger("server.message").info(msg);
+		Logger.getLogger("server.messages").info(msg);
 	}
 
 	public static void logServerErr(String msg) {

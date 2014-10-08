@@ -38,7 +38,7 @@ public class DataSourceFactory {
 		
 		dataSource = new DruidDataSource();
 
-		PropertiesUtil config = new PropertiesUtil("src/dbConfig.properties");
+		PropertiesUtil config = new PropertiesUtil("dbConfig.properties");
 		
 		dataSource.setUrl(config.getDbURL());
 		dataSource.setUsername(config.getDbUserName());
@@ -77,7 +77,11 @@ public class DataSourceFactory {
 	}
 
 	// 实例在使用时通过事先初始化，可随时被调用。
-	public static DataSourceFactory getInstance() {
+	public static DataSourceFactory getInstance() throws SQLException {
+		if (null == factory) {
+			factory = new DataSourceFactory();
+		}
+
 		return factory;
 	}
 
